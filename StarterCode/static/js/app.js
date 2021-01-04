@@ -15,9 +15,23 @@ function init() {
     // create data slices and reverse values
     var barLabels = labels.slice(0, 10).reverse();
     var barValues = values.slice(0, 10).reverse();
-    var barHovertext = hovertext.slice(0, 10).reverse();
+    var barHoverText = hovertext.slice(0, 10).reverse();
 
+    //horizontal barChart label
+    var utLabels = [];
+    for (var i =0; i < 10; i++) {
+      utLabels[i] = "UT " + barLabels[i];
 
+    }
+    //setup Horizontal Bar for top 10 sample data
+    var barData = [{
+      type : 'bar', 
+      x: barValues,
+      y: utLabels,
+      text: barHoverText,
+      orientation: 'h'
+
+    }];
 
 
 
