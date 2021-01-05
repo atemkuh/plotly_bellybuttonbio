@@ -160,13 +160,21 @@ var gauge = [{
             width: 4
           }
         }],
-      title: "<b> Belly Button Washing Frequency </b><br> Scrubs Per Week",
+      title: "<b>Belly Button Washing Frequency</b><br> Scrubs Per Week",
       hovermode: false,
       width: 500,
       height: 500
     }
     Plotly.newPlot('GAUGE', gauge, layout, { modeBarButtons: [["toImage"]] });
 });
+}
+
+function optionChanged(selectValue){
+  d3.json("samples.json").then((data)=>{
+
+  var values=data.samples[selectValue].sample_values;
+    
+  }
 }
 
 
