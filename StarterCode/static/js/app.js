@@ -168,13 +168,32 @@ var gauge = [{
     Plotly.newPlot('GAUGE', gauge, layout, { modeBarButtons: [["toImage"]] });
 });
 }
-
+//optionChanged function
 function optionChanged(selectValue){
   d3.json("samples.json").then((data)=>{
+//filtering data by using sample and matching with ID's
+  var values = data.samples[selectValue].sample_values;
+  var labels = data.samples[selectValue].otu_ids;
+  var hovertext = data.samples[selectValue].otu_labels;
 
-  var values=data.samples[selectValue].sample_values;
-    
-  }
+  //slice and reverse datasets
+  var barValues = values.slice(0, 10).reverse();
+  var barLabels = labels.slice(0, 10).reverse();
+  var barHoverText = hovertext.slice(0, 10).reverse();
+  var utLabels = [];
+    for (var i = 0; i < 10; i++) {
+      utLabels[i] = "UT " + barLabels[i];
+    }
+  //bar and bubble values to update charts
+  Plotly.restyle("bar", "x", [barValues]);
+  Plotly.restyle("bar", "y", [utLabels]);
+  Plotly.restyle("bar", "text", [barHoverText]);
+  Plotly.restyle("bubble", "x", [labels]);
+  Plotly.restyle("bubble", "y", [values]);
+  Plotly.restyle("bubble", "text", [hovertext]);
+
+
+
 }
 
 
