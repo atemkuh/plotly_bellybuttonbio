@@ -7,7 +7,7 @@ function init() {
     for (var i = 0; i < idArr.length; i++) {
       idList.append("option").property("value", i).text(idArr[i]);
     }
-    
+
     var labels = data.samples[0].otu_ids;
     var values = data.samples[0].sample_values;
     var hovertext = data.samples[0].otu_labels;
@@ -25,13 +25,29 @@ function init() {
     }
     //setup Horizontal Bar for top 10 sample data
     var barData = [{
-      type : 'bar', 
+      type : 'bar',
       x: barValues,
       y: utLabels,
       text: barHoverText,
       orientation: 'h'
 
     }];
+    //use plotly to plot web page charts
+    plotly.newPlot('bar', barData);
+    // for bubble charts ssample data
+    var bubbleData=[{
+      x: labels,
+      y: values,
+      text: hovertext,
+      mode: 'markers',
+      markers: {
+        color: labels,
+        size:values
+
+      }
+
+    }];
+
 
 
 
