@@ -32,8 +32,8 @@ function init() {
       orientation: 'h'
 
     }];
-    //use plotly to plot web page charts
-    plotly.newPlot('bar', barData);
+    //use plotly to plot web page bar charts
+    Plotly.newPlot('bar', barData);
     // for bubble charts ssample data
     var bubbleData=[{
       x: labels,
@@ -43,10 +43,28 @@ function init() {
       markers: {
         color: labels,
         size:values
-
       }
-
     }];
+
+    //variable for bubbleData layout
+    var bubbleLayout={
+      showlegend: false,
+      height: 600,
+      width:1000,
+      xaxis:{tittle: "OTU ID"}
+
+    };
+
+    //use plotly to plot web page bubble charts
+    Plotly.newPlot('bubble', bubbleData, bubbleLayout);
+
+    //set variables for "sample-metadata" and "metadata"
+
+    var smData=d3.select("#sample-metadata");//sample-metadata
+    var metadata=data.metadata(0); //metadata to pull initial records
+
+
+
 
 
 
