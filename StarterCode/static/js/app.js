@@ -165,7 +165,7 @@ var gauge = [{
       width: 500,
       height: 500
     }
-    Plotly.newPlot('GAUGE', gauge, layout, { modeBarButtons: [["toImage"]] });
+    Plotly.newPlot('guage', gauge, layout, { modeBarButtons: [["toImage"]] });
 });
 }
 //optionChanged function
@@ -191,10 +191,19 @@ function optionChanged(selectValue){
   Plotly.restyle("bubble", "x", [labels]);
   Plotly.restyle("bubble", "y", [values]);
   Plotly.restyle("bubble", "text", [hovertext]);
+//filter for metadata
+  var smData =d3.select("sample-metadata");
+  var metadata=data.metadata[selectValue];
+  mData.html("");// reset webpage
+
+  //loop each metadata, find key value and append data to the webpage
+  Object.entries(metadata).forEach(([key, value]) => {
+      mData.append("p").text(`${key}: ${value}`);
+    });
 
 
 
-}
+});
 
 
 
