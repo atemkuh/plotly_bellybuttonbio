@@ -1,5 +1,4 @@
 function init() {
-// read data from "sample.json" file
   d3.json("samples.json").then((data) => {
     var idArr = [];
     idArr = data.names;
@@ -98,7 +97,7 @@ var gauge = [{
      }
    }];
    // calculate meter point using trig
-   var degrees = 180 - 20 * metadata.wfreq; // use washing frequency value "wfreg" to get degree.
+   var degrees = 180 - 20 * metadata.wfreq; // use washing frequency value "wfreq" to get degree.
    var radius = .3;
    var radians = degrees * Math.PI / 180;
    var x = radius * Math.cos(radians) + 0.5;
@@ -200,6 +199,22 @@ function optionChanged(selectValue){
   Object.entries(metadata).forEach(([key, value]) => {
       mData.append("p").text(`${key}: ${value}`);
     });
+  //get unit function for the washing freq
+  var degrees 180-20*metadata.wfreq;
+  var radius =.3;
+  var radians =degrees*Math.PI/180;
+  var x =radius *Math.cos(radians)+0.5;
+  var y =radius *Math.sin(radians)+0.5;
+  var innerDegrees1 = degrees + 90;
+  var innerDegrees2 = degrees - 90;
+  var innerRadius = 0.02;
+  var innerRadians1 = innerDegrees1 * Math.PI / 180;
+  var innerX0 = innerRadius * Math.cos(innerRadians1) + 0.5;
+  var innerY0 = innerRadius * Math.sin(innerRadians1) + 0.5;
+  var innerRadians2 = innerDegrees2 * Math.PI / 180;
+  var innerX1 = innerRadius * Math.cos(innerRadians2) + 0.5;
+  var innerY1 = innerRadius * Math.sin(innerRadians2) + 0.5;
+
 
 
 
