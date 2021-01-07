@@ -3,7 +3,7 @@
 Use the available dataset which reveals that a small handful of microbial species (also called operational taxonomic units, or OTUs, in the study) were present in more than 70% of people, while the rest were relatively rare.
 
 The dataset is included as samples.json
-
+## Perform the following... 
 ## Step 1: Plotly
 Populate a dropdown menu with all of the Sample ID's. When an option is selected, this will update all of the charts.
 N.B. If you look in your index.html, the event function optionChanged() is already included. This function takes the value of each dropdown option. You need to define this function in your javascript.
